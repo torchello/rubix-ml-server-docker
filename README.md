@@ -31,7 +31,20 @@ You can configure the server by customizing environment variables.
 
 ### Trained estimator
 The image supports previously trained estimators only. By default, it expects a persistent model to be copied as `data.model`.
-You can customize the file path by overriding `MODEL_FILEPATH`.
+You can customize the file path by overriding `MODEL_FILEPATH` env var.
+
+## Server middleware
+### Access log
+`AccessLog` is enabled by default and logs are written to the `access.log` file. 
+You can change the access log file path by overriding `ACCESS_LOG_FILEPATH` env var. Add the following line to you `Dockerfile`
+if you want to disable the access log middleware:
+```
+ENV ACCESS_LOG_FILEPATH=
+```
+
+## Verbose logging
+Verbose logging is enabled by default and logs are written to the `verbose.log` file.
+Use `VERBOSE_LOG_FILEPATH` env var to change the log file path or disable it (similarly to the access log).
 
 ## How to use?
 The minimal version of the `Dockerfile` to run the server would be:
@@ -56,6 +69,5 @@ COPY my-trained-model.model data.model
 This is just a proof of concept. The following configuration capabilities need to be added to make it production ready:
 * authenticator configuration
 * trusted clients list
-* logger configuration
 
 We may consider adding [Event](https://pecl.php.net/package/event) extension by default also.
