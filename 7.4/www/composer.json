@@ -1,0 +1,13 @@
+{
+    "name": "torchello/rubix-ml-server-docker",
+    "description": "Docker image for Rubix ML Server",
+    "authors": [
+        {
+            "name": "Alex Torchenko",
+            "email": "torchenko@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+    }
+}
