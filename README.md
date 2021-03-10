@@ -102,10 +102,9 @@ COPY my-trained-model.model data.model
 ```
 
 ### Ingress and basic authentication
-Apparently, when using the server behind the NGINX Ingress Controller, if you want to use `BasicAuthenticator` you also need to 
-configure Ingress authentication via annotations as described [here](https://kubernetes.github.io/ingress-nginx/examples/auth/basic/).
-Please let us know if you know how to enable basic authentication without adjusting Ingress config.
-
+When using the server behind the NGINX Ingress Controller with `BasicAuthenticator` enabled you need to  
+configure `External Basic Authentication` as described [here](https://kubernetes.github.io/ingress-nginx/examples/auth/external-auth/)
+(point `nginx.ingress.kubernetes.io/auth-url` to your server's web UI).
 
 ## Support
 Feel free to provide feedback or ask questions in the [RubixML Telegram channel](https://t.me/RubixML). 
