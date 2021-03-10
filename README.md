@@ -102,9 +102,9 @@ COPY my-trained-model.model data.model
 ```
 
 ### Ingress and basic authentication
-Apparently, the NGINX Ingress Controller does not work with the `BasicAuthenticator` out of the box. You may want to 
-configure the authentication via annotations as described [here](https://kubernetes.github.io/ingress-nginx/examples/auth/basic/).
-Please let us know if you know how to enable basic authentication without adjusting Ingress config. 
+Apparently, when using the server behind the NGINX Ingress Controller, if you want to use `BasicAuthenticator` you also need to 
+configure Ingress authentication via annotations as described [here](https://kubernetes.github.io/ingress-nginx/examples/auth/basic/).
+Please let us know if you know how to enable basic authentication without adjusting Ingress config.
 
 
 ## Support
