@@ -25,7 +25,7 @@ You can configure the server by customizing environment variables.
 | --------------------------- | ----------- | ----------- |
 | `HOST`                      | 127.0.0.1   | The host address to bind the server to. Use `0.0.0.0` to bind to all interfaces. |
 | `PORT`                      | 8000        | The network port to run the HTTP services on. |
-| `CERT_FILEPATH`             | null        | The path to the certificate used to authenticate and encrypt the HTTP channel (you will need to copy the certificate in your `Dockerfile`). |
+| `CERT_FILEPATH`             |             | The path to the certificate used to authenticate and encrypt the HTTP channel (you will need to copy the certificate in your `Dockerfile`). |
 | `MAX_CONCURRENT_REQUESTS`   | 10          | The maximum number of requests that can be handled concurrently. |
 | `SSE_RECONNECT_BUFFER`      | 50          | The maximum number of events to store in the server-sent events (SSE) reconnect buffer. |
 
@@ -40,6 +40,42 @@ You can change the access log file path by overriding `ACCESS_LOG_FILEPATH` env 
 if you want to disable the access log middleware:
 ```
 ENV ACCESS_LOG_FILEPATH=
+```
+
+### Basic authenticator
+Use the following env variables to enable [`BasicAuthenticator` middleware](https://github.com/RubixML/Server#basic-authenticator) (only one username is supported):
+
+| Environment variable           | Default     | Description |
+| ------------------------------ | ----------- | ----------- |
+| `BASIC_AUTHENTICATOR_USERNAME` |             | Authenticator's username. |
+| `BASIC_AUTHENTICATOR_PASSWORD` |             | Authenticator's password. |
+| `BASIC_AUTHENTICATOR_REALM`    | auth        | The unique name given to the scope of permissions required for this server. |
+
+Note: you need to define both username and password to enable the middleware.
+
+### Shared token authenticator
+Use the following env variables to enable [`SharedTokenAuthenticator` middleware](https://github.com/RubixML/Server#shared-token-authenticator):
+
+| Environment variable                  | Default     | Description |
+| ------------------------------------- | ----------- | ----------- |
+| `SHARED_TOKEN_AUTHENTICATOR_TOKENS`   |             | Comma separated list of secret keys (bearer tokens) used to authorize requests. |
+| `SHARED_TOKEN_AUTHENTICATOR_REALM`    | auth        | The unique name given to the scope of permissions required for this server. |
+
+Example of tokens definition:
+```
+ENV SHARED_TOKEN_AUTHENTICATOR_TOKENS=secret,another-secret
+```
+
+### Trusted clients
+Use the following env variable to enable [`TrustedClients` middleware](https://github.com/RubixML/Server#trusted-clients):
+
+| Environment variable    | Default     | Description |
+| ----------------------- | ----------- | ----------- |
+| `TRUSTED_CLIENTS_IPS`   |             | Comma separated list of trusted client ip addresses. |
+
+Example:
+```
+ENV TRUSTED_CLIENTS_IPS=127.0.0.1,192.168.4.1,45.63.67.15
 ```
 
 ## Verbose logging
@@ -64,10 +100,3 @@ ENV PORT=5000
 
 COPY my-trained-model.model data.model
 ```
-
-## TODO
-This is just a proof of concept. The following configuration capabilities need to be added to make it production ready:
-* authenticator configuration
-* trusted clients list
-
-We may consider adding [Event](https://pecl.php.net/package/event) extension by default also.
