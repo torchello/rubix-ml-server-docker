@@ -1,18 +1,18 @@
 # Docker image for Rubix ML Server
-Based on `php:7.4-cli` image.
+Based on `php:8.0-cli` image.
 
 ## Supported tags and respective `Dockerfile` links
 Image tags follow PHP versions:
-* `latest` `7.4` ([7.4/Dockerfile](https://github.com/torchello/rubix-ml-server-docker/blob/master/7.4/Dockerfile))
+* `latest` `8.0` ([8.0/Dockerfile](https://github.com/torchello/rubix-ml-server-docker/blob/master/7.4/Dockerfile))
 
 ## Rubix ML component versions
 The image uses the following versions of the Rubix ML components (the versions are fixed when image is built):
 
 | Component                                   | Version      |
 | ------------------------------------------- | ------------ |
-| [Server](https://github.com/RubixML/Server) | `dev-master` |
-| [Tensor](https://github.com/RubixML/Tensor) | `^2.0`       |
-| [ML](https://github.com/RubixML/ML)         | `^0.2.4`     |
+| [Server](https://github.com/RubixML/Server) | `^1.0`       |
+| [Tensor](https://github.com/RubixML/Tensor) | `^3.0`       |
+| [ML](https://github.com/RubixML/ML)         | `^1.2`       |
 
 ## Tensor extension
 Tensor extension is included into the image to boost the performance (thanks to the awesome 
