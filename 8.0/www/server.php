@@ -4,10 +4,10 @@ require 'vendor/autoload.php';
 
 use Rubix\ML\PersistentModel;
 use Rubix\ML\Persisters\Filesystem;
-use Rubix\Server\HTTP\Middleware\Server\AccessLogGenerator;
-use Rubix\Server\HTTP\Middleware\Server\BasicAuthenticator;
-use Rubix\Server\HTTP\Middleware\Server\SharedTokenAuthenticator;
-use Rubix\Server\HTTP\Middleware\Server\TrustedClients;
+use Rubix\Server\HTTP\Middleware\AccessLogGenerator;
+use Rubix\Server\HTTP\Middleware\BasicAuthenticator;
+use Rubix\Server\HTTP\Middleware\SharedTokenAuthenticator;
+use Rubix\Server\HTTP\Middleware\TrustedClients;
 use Rubix\Server\HTTPServer;
 use Rubix\Server\Loggers\File;
 
